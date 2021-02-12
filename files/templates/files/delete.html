@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Удаление
+{% endblock %}
+
+{% block content %}
+Вы действительно хотите удалить файл {{file.name}}?
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Удалить" class="btn btn-primary">
+</form>
+{% endblock %}
+

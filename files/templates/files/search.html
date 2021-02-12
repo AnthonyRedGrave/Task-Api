@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout/base.html' %}
+{% block title %}
+Результаты поиска по запросу: {{file_info}}
+{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Файл</th>
+      <th scope="col">URL</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Размер</th>
+      <th scope="col">Дата публикации</th>
+      <th scope="col">Пользователь</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+  {% for file in files %}
+    <tr>
+      <td>{{file.name}}</td>
+      <td><a href="{{file.file.url}}">Файл</a></td>
+      <td>{{file.content}}</td>
+      <td>{{file.size|filesizeformat}}</td>
+      <td>{{file.date_pub}}</td>
+      <td>{{file.user}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
